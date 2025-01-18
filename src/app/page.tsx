@@ -1,8 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import isClient from "./isClient";
 
 export default function Home() {
+  if (!isClient()) {
+    return null;
+  }
   const [selectedLetter, setSelectedLetter] = useState<string | null>(null);
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
   const [selectedM, setSelectedM] = useState<string | null>(null);
