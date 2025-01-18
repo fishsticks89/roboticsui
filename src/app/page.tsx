@@ -13,9 +13,10 @@ export default function Home() {
 
   const handleSelection = () => {
     const confirmed = window.confirm("Click OK to Score, Cancel to Match Load");
-    if (confirmed) {
+    if (!confirmed) {
         return selectedM ?? "ERROR DUDE";
     } else {
+      console.log(`${selectedLetter}${selectedLevel}`);
         return `${selectedLetter}${selectedLevel}`; //
     }
     throw new Error("No selection made");
@@ -26,7 +27,7 @@ export default function Home() {
     <CharacterPairList getPair={handleSelection} />
     <div className="font-[family-name:var(--font-geist-sans)]">
       <div className="relative w-[80vh] h-[80vh] mx-auto">
-        {[..."abcdefghijkl"].map((letter, index) => {
+        {[..."abcdefghijkl".toUpperCase()].map((letter, index) => {
           const angle = (index * (2 * Math.PI / 12)) - Math.PI / 2;
           const radius = (80 * (window?.innerHeight ?? 2) / 100) * 0.4; // 40% of 80vh
           const x = radius * Math.cos(angle);
