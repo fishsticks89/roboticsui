@@ -13,13 +13,9 @@ export default function Home() {
 
   const handleSelection = () => {
     const confirmed = window.confirm("Click OK to Score, Cancel to Match Load");
-    if (selectedM) {
-      // Handle match load selection
-      if (confirmed) {
-        return selectedM; // Returns M1-M6
-      }
-    } else if (selectedLetter && selectedLevel) {
-      // Handle reef location selection
+    if (confirmed) {
+        return selectedM ?? "ERROR DUDE";
+    } else {
         return `${selectedLetter}${selectedLevel}`; //
     }
     throw new Error("No selection made");
